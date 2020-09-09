@@ -1,0 +1,505 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script type='module' src='https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js'></script>
+    <script nomodule='' src='https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js'></script>
+    <link href="https://fonts.googleapis.com/css2?family=Molengo&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </head>
+    
+    <div class="content">
+      <div class="left">
+        <div class="logo">
+          WHERE IS STARMAN?
+        </div>
+        
+        <div class="text">
+              <div class="stats">
+                <p class="icon"><ion-icon name="pin-outline"></ion-icon></p>
+                <div style="font-size:28px;color:#ff073a;" class="number" id="farMars"></div>
+                <p style="color:gray;font-size:10px;"><br>MILES REMAINING</p>
+                <p></p>
+              </div>
+           </div>
+      
+        <div class="text">
+          <div class="stats">
+            <p class="icon"><ion-icon name="speedometer-outline"></ion-icon></p>
+            <p class="number" id="speedMi">13686007 </p>
+            <p style="color:gray;font-size:10px;"><br>MILES PER HOUR</p>
+          </div>
+              
+        </div>
+        <div class="text">
+          <div class="stats">
+            <p class="icon"><ion-icon name="calendar-outline"></ion-icon></p>
+            <p class="number" id="days"></p>
+            <p style="color:gray;font-size:10px;"><br>DAYS</p>
+          </div>
+          
+        </div>
+        <div class="text">
+          <div class="stats">
+            <p class="icon"><ion-icon name="flag-outline"></ion-icon></p>
+            <p class="number" id="eta"></p>
+            <p style="color:gray;font-size:10px;">DAYS FOR CLOSE APPROACH</p>
+            <p></p>
+          </div>
+          
+        </div>
+        
+        
+      
+      </div>
+      <div class="right">
+        
+        <div id="menu">
+         
+          
+          <div class="circle c1">
+            <div class="circle c2">
+              <div class="circle c3">
+                <div class="circle c4">
+                  <div class="circle pointEarth">
+                    <!--  mars and roadster      -->
+                    <div style="z-index:100;" class="round-category-item">
+                      <div id="car" class="roadster blink">T</div> 
+                      <div class="badge">Mars</div>
+    
+                    </div> 
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+    
+          <br><br>
+          <div class="box"><span style="color:white;"><img class="planet" src="https://www.iconfinder.com/data/icons/small-n-flat/24/globe-512.png" style="height:20px;"></span>
+            <div id="progressbar">
+                <div id="loadingBar" class="tooltip"><ion-icon style="color:white;" name="car-sport-sharp"></ion-icon>
+    <!--               <span class="tooltiptext">Tooltip text</span>          -->
+                </div>
+            </div>
+            <span style="color:white;text-aling:center;">
+                <img class="planet" src="https://www.iconfinder.com/data/icons/planets-1/512/Mars-512.png" style="height:20px;">
+    
+              <div style="color:white;margin:10px;" class="number" id="traveled"></div>
+              <p style="color:gray;font-size:10px;">MAX. PROXIMITY TO MARS</p>
+              
+             </span>
+              
+        </div>
+          
+          
+        </div>
+        <div id="locateButton" class="centered">
+          <div id="icon" >
+              <ion-icon  class="icon" style="text-shadow: 0 0 5px green;" name="power-sharp"></ion-icon><br>
+              <div style="color:white;">LAUNCH RADAR</div>       
+          </div>
+          
+        </div>
+        
+      </div>
+      
+      
+    </div>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Molengo', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+          }
+          
+          :root{
+            --radar:#27b645;
+            --neon-red:#ff073a;
+            --yellow:#f2ff00;
+            --bg-blue:#0d101e;
+            --radarColor:#222F3E;
+            --lineBlue:#0097fb26;
+            --neonShadow:#3485e4;
+            --coolGreen:#3dcc91;
+          }
+          
+          .content{
+            width: 100vw;
+            height: 100vh;
+          }
+          
+          .left{
+            
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40vw;
+            height: 100vh;
+            background-color: var(--bg-blue);
+            background: linear-gradient(180deg,#192334 0%,#0d101e 100%);
+          }
+          
+          .right {
+            border-left: 0.5px solid #0097fb40;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            width: 60vw;
+            background: linear-gradient(180deg,#192334 0%,#0d101e 100%);
+          }
+          
+          #menu {
+            width: calc(80% - 30px);
+            height: 50%;
+          /*   background-color: red; */
+            margin: 70px auto;
+          /*   text-align:center;
+            display:none; */
+            transition-timing-function: ease-in;
+            transition: 0.2s;
+            display:none;
+            
+          }
+          
+          #locateButton{
+            text-align:center;
+            color:var(--neon-red);
+            padding:10px 20px;
+            border: 1px solid #0097fb26;
+            background-color: rgba(98,19,177,0.15);
+          /*   position: relative; */
+            width: 30vw;
+            transition-timing-function: ease-in;
+            transition: 0.2s;
+            border-radius: 10px;
+            cursor:pointer;
+            position: fixed;
+            left: 50%;
+            top: 45%;
+            transform: translateX(23px);
+            
+          }
+          
+          #locateButton:hover{
+            border: 1px solid #0097fb40;
+            box-shadow: 2px 8px 40px var(--neonShadow);
+            padding:12px 22px;
+          }
+          
+          .logo {
+            width: 100%;
+            height: 30px;
+          /*   background-color: red; */
+            margin: 15px;
+            color:white;
+          }
+          
+          .text{
+            text-align:center;
+            border-radius:5px;
+            color:#fff;
+            position: relative;
+            width: 30vw;
+            height: 20%;
+            left: 5vw;
+            margin-bottom:10px;
+          /*   top: 5%; */
+          /*   transform: translateY(-50%); */
+          /*   background-color: #212650; */
+            border: 1px solid #0097fb26;
+            transition-timing-function: ease-in;
+            transition: 0.2s;
+          }
+          
+          .text:hover{
+            border: 1px solid #0097fb40;
+            box-shadow: 2px 8px 40px var(--neonShadow);
+          }
+          
+          .textMain{
+            text-align:center;
+            border-radius:5px;
+            color:#fff;
+            position: relative;
+            width: 30vw;
+            height: 20%;
+            left: 5vw;
+            margin-bottom:10px;
+            top: 20%;
+            transform: translateY(-50%);
+          /*   background-color: #212650; */
+            border: 1px solid rgba(98,19,177,0.25);
+            transition-timing-function: ease-in;
+            transition: 0.2s;
+            background-color: rgba(98,19,177,0.15);
+          }
+          
+          .stats{
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+          }
+          
+          .icon{
+            font-size:32px;
+            text-shadow: 0 0 5px var(--neon-red);
+          }
+          
+          #icon{
+            -webkit-animation: glow 1s ease-in-out infinite alternate;
+            -moz-animation: glow 1s ease-in-out infinite alternate;
+            animation: glow 1s ease-in-out infinite alternate;
+          }
+          
+          @-webkit-keyframes glow {
+            from {
+              text-shadow: 0 0 5px var(--neon-red);
+            }
+            
+            to {
+              text-shadow: 0 0 10px #ff4da6;
+            }
+          }
+          
+          .number{
+            font-size:32px;
+          }
+          
+          .box {
+              display:block;
+          /*     margin-top:70px; */
+              border-radius: 10px;
+              padding: 25px;
+              width:100%;
+          /*     background-color: rgba(51, 51, 51, 0.96); */
+              text-align: center;
+            transform: translateX(-20px);
+          }
+          #progressbar {
+              border: 3px solid var(--lineBlue);
+              border-radius: 20px;
+              padding: 2px;
+              width: 50%;
+              display: inline-block;
+          }
+          #loadingBar {
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              box-sizing: border-box;
+              /* background-image:url(http://upstreamonline.com.cdn.bitbit.net/incoming/article1250137.ece/alternates/article_main/Cross%20the%20line%20sprint%20finishing%20tape%20runner%20athletics.jpg); */
+              background-color:var(--neonShadow);
+              width: 30%;
+              height: 18px;
+              border: 1px solid rgba(0, 0, 0, 0);
+              border-radius: 20px;
+              box-shadow: 2px 8px 40px var(--neonShadow);
+          }
+          /* .text {
+              color: #fff;
+              margin-top: 15px;
+              font-size: 21px;
+              font-weight: bold;
+          }   */
+          
+          
+          /* radar  */
+          .spinner, .point, .spins{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin:auto;
+            width: 5px;
+            height: 5px;
+            background: none;
+            border-radius: 100%;
+          }
+          
+          /* earth */
+          .circle {
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid #0097fb40;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .c2 {
+            width: 300px;
+            height: 300px;
+            border: 2px solid #0097fb40;
+          }
+          
+          .c3 {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #0097fb40;
+          }
+          
+          .c4 {
+            width: 100px;
+            height: 100px;
+          }
+          
+          .pointEarth{
+            background-color:white;
+            border:none;
+            width: 10px;
+            height: 10px;
+            margin:20px;
+          }
+          
+          .round-category-item .badge{
+            position: relative;
+            top: -50px;
+          /*   right: -200px; */
+            margin-left:300px;
+            padding: 10px;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+            font-size:8px;
+            width:20px;
+            height:20px;
+          }
+          
+          /* -roadster's location- */
+          #car{
+            position: absolute;
+            top: 200px; 
+          /*   right: -100px; */
+          /* left is dynamic!!!   */
+          }
+          
+          
+          .roadster{
+            padding: 2px;
+            border-radius: 50%;
+            background-color: var(--neon-red);
+            color: var(--neon-red);
+            font-size:2px;
+            width:5px;
+            height:5px;
+            -moz-animation:blink 1.75s step-end 0.25s infinite;
+          /*   box-shadow: 10px 10px 10px rgba(145, 92, 182, .4); */
+            box-shadow:
+                  inset 0 0 50px var(--neon-red),      /* inner white */
+                  inset 20px 0 80px var(--neon-red),   /* inner left magenta short */
+                  inset -20px 0 80px var(--neon-red),  /* inner right cyan short */
+                  inset 20px 0 300px var(--neon-red),  /* inner left magenta broad */
+                  inset -20px 0 300px var(--neon-red), /* inner right cyan broad */
+                  0 0 50px var(--neon-red),            /* outer white */
+                  -10px 0 80px var(--neon-red),        /* outer left magenta */
+                  10px 0 80px var(--neon-red);         /* outer right cyan */
+          }
+          
+          
+          .blink {
+            animation: blink-animation 1s steps(5, start) infinite;
+            -webkit-animation: blink-animation 1s steps(5, start) infinite;
+          }
+          @keyframes blink-animation {
+            to {
+              visibility: hidden;
+            }
+          }
+          @-webkit-keyframes blink-animation {
+            to {
+              visibility: hidden;
+            }
+          }
+          
+          .centered {
+          /*   position: absolute;
+            top: 45%;
+            left: 40%; */
+          }
+             
+          
+    </style>
+
+    <Script>
+    //variables
+    const baseURL = 'https://api.spacexdata.com/v3/roadster';
+    var longitude = document.getElementById("longitude");
+    var period_days = document.getElementById("days");
+    var eta = document.getElementById("eta");
+
+
+    fetch(baseURL)
+    .then(result => result.json())
+    .then(json => {
+    
+        
+    var marsDist = json.mars_distance_mi;
+    
+    //countdown function
+    function count(){
+        
+        // *** run every second ***
+        setInterval(function(){
+
+        document.getElementById("farMars").innerText = marsDist.toLocaleString();
+            
+        marsDist = marsDist - (json.speed_mph/3600); 
+        //console.log(marsDist);
+
+        }, 1000);
+        }
+        
+        count();
+    
+        // longitude.innerText = json.mars_distance_mi;
+        speedMi.innerText = json.speed_mph.toLocaleString();
+        period_days.innerText = json.period_days.toFixed(2);
+
+        // eta calculation
+        var etaCalc = (json.mars_distance_mi/json.speed_mph)/24;
+        eta.innerText = etaCalc.toFixed(2); 
+    
+        //percentage traveled
+        var disToMars = 45000000;
+        var percentage = json.mars_distance_mi/disToMars;
+        var disTraveled = document.getElementById("traveled");
+        var perTraveled = (1 - percentage)*100;
+        disTraveled.innerText = perTraveled.toFixed(2) + "%";
+    
+        //progress bar
+        document.getElementById("loadingBar").style.width = perTraveled+"%";
+        
+        //roadster radar
+        document.getElementById("car").style.marginLeft = parseInt(((perTraveled/100)*150)+ 150)+"px";
+        
+        
+        
+            //   START
+            $("#locateButton").click(function(){
+                //change color to green effect
+                document.getElementById("icon").style.color = "var(--coolGreen)";
+                setTimeout(function(){ 
+                //wait 1 second...
+                $("#menu").toggle();
+                $(this).position = "absolute";
+                $("#locateButton").hide();
+                
+                
+                }, 2000);
+                
+            });
+        
+        
+        }); 
+    </Script>
